@@ -26,3 +26,15 @@ function operate(operator, firstNumber, secondNumber) {
             return divide(firstNumber, secondNumber);
     }
 }
+
+let displayValue = "";
+
+const display = document.querySelector("#display");
+const digitButtons = document.querySelectorAll(".digit");
+
+digitButtons.forEach(digit => {
+    digit.addEventListener("click", e => {
+        displayValue += e.currentTarget.textContent;
+        display.textContent = displayValue;
+    });
+});
