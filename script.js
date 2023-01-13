@@ -45,7 +45,7 @@ digitButtons.forEach(digit => {
 operatorButtons.forEach(operator => {
     operator.addEventListener("click", e => {
         if (operation) {
-            value = operate(operation, value, displayValue);
+            value = operate(operation, +value, +displayValue);
             display.textContent = value;
             displayValue = "";
         } else {
