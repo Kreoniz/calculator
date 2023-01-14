@@ -44,11 +44,11 @@ digitButtons.forEach(digit => {
 
 operatorButtons.forEach(operator => {
     operator.addEventListener("click", e => {
-        if (operation) {
+        if (operation && Number.isFinite(displayValue)) { 
             value = operate(operation, +value, +displayValue);
             display.textContent = value;
             displayValue = "";
-        } else {
+        } else if (Number.isFinite(displayValue)) {
             value = +displayValue;
             displayValue = "";
         }
