@@ -34,6 +34,7 @@ let operation = "";
 const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
+const equalButton = document.querySelector(".equal");
 
 digitButtons.forEach(digit => {
     digit.addEventListener("click", e => {
@@ -54,4 +55,17 @@ operatorButtons.forEach(operator => {
         }
         operation = e.currentTarget.textContent;
     });
+});
+
+equalButton.addEventListener("click", e => {
+    console.log(operation, value, displayValue);
+    if (operation && Number.isFinite(displayValue)) { 
+        value = operate(operation, +value, +displayValue);
+        display.textContent = value;
+        displayValue = "";
+    } else if (Number.isFinite(displayValue)) {
+        value = +displayValue;
+        displayValue = "";
+    }
+    operation = "";
 });
