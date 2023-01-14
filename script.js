@@ -37,7 +37,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 digitButtons.forEach(digit => {
     digit.addEventListener("click", e => {
-        displayValue += e.currentTarget.textContent;
+        displayValue = +(displayValue + e.currentTarget.textContent);
         display.textContent = displayValue;
     });
 });
