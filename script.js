@@ -53,7 +53,7 @@ operatorButtons.forEach(operator => {
 
         if (operation && Number.isFinite(displayValue)) { 
             value = operate(operation, +value, +displayValue);
-            display.textContent = value;
+            display.textContent = Math.round(value * 100000) / 100000;
             displayValue = "";
         } else if (Number.isFinite(displayValue)) {
             value = +displayValue;
@@ -68,7 +68,7 @@ equalButton.addEventListener("click", e => {
 
     if (operation && Number.isFinite(displayValue)) { 
         value = operate(operation, +value, +displayValue);
-        display.textContent = value;
+        display.textContent = Math.round(value * 100000) / 100000;
         displayValue = "";
     } else if (Number.isFinite(displayValue)) {
         value = +displayValue;
