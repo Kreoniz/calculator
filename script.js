@@ -11,6 +11,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b == 0) return snarkyErrorMessage;
     return a / b;
 }
 
@@ -31,6 +32,8 @@ let displayValue = "";
 let value = 0;
 let operation = "";
 
+const snarkyErrorMessage = "Weirdo...";
+
 const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
@@ -46,6 +49,8 @@ digitButtons.forEach(digit => {
 
 operatorButtons.forEach(operator => {
     operator.addEventListener("click", e => {
+        if (value == snarkyErrorMessage) value = 0;
+
         if (operation && Number.isFinite(displayValue)) { 
             value = operate(operation, +value, +displayValue);
             display.textContent = value;
@@ -59,6 +64,8 @@ operatorButtons.forEach(operator => {
 });
 
 equalButton.addEventListener("click", e => {
+    if (value == snarkyErrorMessage) value = 0;
+
     if (operation && Number.isFinite(displayValue)) { 
         value = operate(operation, +value, +displayValue);
         display.textContent = value;
